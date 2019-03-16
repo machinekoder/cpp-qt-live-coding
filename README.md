@@ -10,5 +10,24 @@ Additionally, it enabled customization of the live coding environemnt, including
 
 ## Install
 
+### With Qt Creator
+
+* git clone the project repository
+* Open the projects `.pro` file in Qt Creator
+* add a new make install step with Make argument `install`
+* Build
+
+### From the terminal
+
+```bash
+git cloneh https://github.com/machinekoder/cpp-qt-live-coding.git
+cd cpp-qt-live-coding
+mkdir build
+cd build
+qmake ..
+make -j$(nproc)
+make install
+```
 
 ## How to Use
+
