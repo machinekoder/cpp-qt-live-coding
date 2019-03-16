@@ -10,7 +10,7 @@ ProjectBrowser::ProjectBrowser(QObject *parent) : QObject(parent)
 {
     m_projectPath = QUrl::fromLocalFile(QFileInfo(QCoreApplication::applicationFilePath()).dir().path());
 
-    updateFiles();
+    connect(this, &ProjectBrowser::extensionsChanged, this, &ProjectBrowser::updateFiles);
 }
 
 QStringList ProjectBrowser::qmlFiles() const
@@ -23,9 +23,23 @@ QUrl ProjectBrowser::projectPath() const
     return m_projectPath;
 }
 
+QStringList ProjectBrowser::extensions() const
+{
+    return m_extensions;
+}
+
 void ProjectBrowser::update()
 {
     updateFiles();
+}
+
+void ProjectBrowser::setExtensions(const QStringList &extensions)
+{
+    if (m_extensions == extensions)
+        return;
+
+    m_extensions = extensions;
+    emit extensionsChanged();
 }
 
 void ProjectBrowser::updateFiles()
@@ -37,7 +51,7 @@ void ProjectBrowser::updateFiles()
     while (it.hasNext()) {
         it.next();
         const auto &extension = it.fileInfo().completeSuffix();
-        if (extension == "qml") {
+        if (m_extensions.contains(extension, Qt::CaseInsensitive)) {
             fileList.append(it.fileInfo().filePath());
         }
     }
