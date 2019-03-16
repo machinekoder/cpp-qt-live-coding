@@ -31,3 +31,10 @@ make install
 
 ## How to Use
 
+To use the live coding environment, you need to follow these steps:
+
+1. Create [`live.qml`](./example/live.qml) which is the live coding version of your `main.qml`.
+2. Modify your [`main.cpp`](./example/main.cpp) to add a `-l --live` command line argument.
+3. Disable shadow build and run your application.
+
+Take a look at [example](./example) for an example.
