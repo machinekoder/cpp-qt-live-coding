@@ -134,8 +134,6 @@ Item {
             root.visibility = Window.AutomaticVisibility
           }
         }
-
-        Component.onCompleted: checked = root.visibility === Window.FullScreen
       }
 
       CheckBox {
@@ -149,8 +147,6 @@ Item {
             root.flags = root.flags & ~Qt.WindowStaysOnTopHint
           }
         }
-
-        Component.onCompleted: checked = root.flags & Qt.WindowStaysOnTopHint
       }
     }
 
@@ -215,4 +211,6 @@ Item {
     nameFilters: ["*.qmlc", "*.jsc", "*.pyc", ".#*", ".*", "__pycache__", "*___jb_tmp___", // PyCharm safe write
       "*___jb_old___"]
   }
+
+  // add additional components that should only be loaded once here.
 }

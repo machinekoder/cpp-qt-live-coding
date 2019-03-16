@@ -7,7 +7,11 @@ In constrast to other live coding environments, this project is a live coding QM
 
 Integrating QML live coding into your application significantly boosts your HMI developers productivity. Compared to stand-alone solutions, this approach enables integration of C++ QML components without deploying them first.
 
-Additionally, it enabled customization of the live coding environemnt, including pre-loading of resource intensive QML components.
+Additionally, it enables customization of the live coding environemnt, including pre-loading of resource intensive QML components.
+
+**See also**
+
+* [python-qt-live-coding](https://github.com/machinekoder/python-qt-live-coding): The Python version of this project.
 
 ## Install
 

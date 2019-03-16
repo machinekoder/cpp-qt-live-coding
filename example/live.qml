@@ -28,7 +28,7 @@ ApplicationWindow {
       windowSettings.screen = root.screen.serialNumber
   }
 
-  LiveCoding {
+  LiveCodingPanel {
     id: liveCoding
     anchors.fill: parent
   }

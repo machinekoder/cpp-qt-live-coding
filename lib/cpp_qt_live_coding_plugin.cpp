@@ -16,7 +16,7 @@ static const struct {
     const char *type;
     int major, minor;
 } qmldir [] = {
-    { "LiveCoding", 1, 0 },
+    { "LiveCodingPanel", 1, 0 },
     { "FileSelectionDialog", 1, 0 },
 };
 
