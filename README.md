@@ -1,4 +1,5 @@
-# C++ Qt Live Coding
+# Live Coding Environment for C++, Qt and QML
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/machinekoder/cpp-qt-live-coding/blob/master/LICENSE)
 
 This project aims to be the C++ version for Qt/QML live coding.
 
