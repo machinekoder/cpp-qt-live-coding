@@ -1,5 +1,5 @@
 #include "cpp_qt_live_coding_plugin.h"
-#include "applicationhelpers.h"
+#include "livecoding.h"
 #include "filewatcher.h"
 #include "projectbrowser.h"
 
@@ -27,7 +27,7 @@ void CppQtLiveCodingPlugin::registerTypes(const char *uri)
     // @uri com.machinekoder.live
     qmlRegisterType<FileWatcher>(uri, 1, 0, "FileWatcher");
     qmlRegisterType<ProjectBrowser>(uri, 1, 0, "ProjectBrowser");
-    qmlRegisterSingletonType<ApplicationHelpers>(uri, 1, 0, "ApplicationHelpers", ApplicationHelpers::qmlSingletonProvider);
+    qmlRegisterSingletonType<LiveCoding>(uri, 1, 0, "LiveCoding", LiveCoding::qmlSingletonProvider);
 
     const QString filesLocation = fileLocation();
     for (int i = 0; i < int(sizeof(qmldir)/sizeof(qmldir[0])); i++) {

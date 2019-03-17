@@ -4,21 +4,21 @@
 #include <QObject>
 #include <QQmlEngine>
 
-class ApplicationHelpers : public QObject
+class LiveCoding : public QObject
 {
     Q_OBJECT
 
     Q_PROPERTY(QString currentLanguage READ currentLanguage CONSTANT)
 
 public:
-    explicit ApplicationHelpers(QQmlEngine *engine, QObject *parent = nullptr);
+    explicit LiveCoding(QQmlEngine *engine, QObject *parent = nullptr);
 
     static QObject *qmlSingletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine)
     {
         Q_UNUSED(engine)
         Q_UNUSED(scriptEngine)
 
-        return  new ApplicationHelpers(engine);
+        return  new LiveCoding(engine);
     }
 
     /**

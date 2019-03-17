@@ -16,12 +16,12 @@ Item {
 
     function reload() {
       loader.source = ""
-      ApplicationHelpers.clearQmlComponentCache()
+      LiveCoding.clearQmlComponentCache()
       loader.source = fileDialog.file
     }
 
     function openWithSystemEditor() {
-      ApplicationHelpers.openUrlWithDefaultApplication(fileDialog.file)
+      LiveCoding.openUrlWithDefaultApplication(fileDialog.file)
     }
 
     function unload() {

@@ -9,17 +9,17 @@ uri = com.machinekoder.live
 # Input
 SOURCES += \
         filewatcher.cpp \
-    applicationhelpers.cpp \
     projectbrowser.cpp \
     cpp_qt_live_coding_plugin.cpp \
-    livewindow.cpp
+    livewindow.cpp \
+    livecoding.cpp
 
 HEADERS += \
         filewatcher.h \
-    applicationhelpers.h \
     projectbrowser.h \
     cpp_qt_live_coding_plugin.h \
-    livewindow.h
+    livewindow.h \
+    livecoding.h
 
 DISTFILES = qmldir
 
