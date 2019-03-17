@@ -4,28 +4,27 @@
 #include <QObject>
 #include <QQmlEngine>
 
-class LiveCoding : public QObject
-{
+class LiveCoding : public QObject {
     Q_OBJECT
 
     Q_PROPERTY(QString currentLanguage READ currentLanguage CONSTANT)
 
 public:
-    explicit LiveCoding(QQmlEngine *engine, QObject *parent = nullptr);
+    explicit LiveCoding(QQmlEngine* engine, QObject* parent = nullptr);
 
-    static QObject *qmlSingletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine)
+    static QObject* qmlSingletonProvider(QQmlEngine* engine, QJSEngine* scriptEngine)
     {
         Q_UNUSED(engine)
         Q_UNUSED(scriptEngine)
 
-        return  new LiveCoding(engine);
+        return new LiveCoding(engine);
     }
 
     /**
      * Opens an URL with the default application provided by the system.
      * E.g. a text file will be opened by the default text editor.
      */
-    Q_INVOKABLE bool openUrlWithDefaultApplication(const QUrl &url) const;
+    Q_INVOKABLE bool openUrlWithDefaultApplication(const QUrl& url) const;
 
     /**
      * Clear QML component cache of the main QQmlEngine.
@@ -40,7 +39,7 @@ public:
     /**
      * Sets the new UI language. Changes take effect after a restart.
      */
-    Q_INVOKABLE void setLanguage(const QString &language);
+    Q_INVOKABLE void setLanguage(const QString& language);
 
     /**
      * Restarts the application.
@@ -48,7 +47,7 @@ public:
     Q_INVOKABLE void restartApplication();
 
 private:
-    QQmlEngine *m_engine;
+    QQmlEngine* m_engine;
 
 }; // class ApplicationHelpers
 

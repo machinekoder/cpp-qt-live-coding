@@ -6,7 +6,6 @@
 namespace LiveWindow {
 
 QString loadLiveWindow();
-
 }
 
 #endif // LIVEWINDOW_H

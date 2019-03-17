@@ -1,5 +1,6 @@
 # Live Coding Environment for C++, Qt and QML
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/machinekoder/cpp-qt-live-coding/blob/master/LICENSE)
+[![Code style: WebKit](https://img.shields.io/badge/code%20style-WebKit-blue.svg)](https://webkit.org/code-style-guidelines/)
 
 This project aims to be the C++ version for Qt/QML live coding.
 
@@ -43,3 +44,4 @@ To use the live coding environment, you need to follow these steps:
 3. Disable shadow build and run your application.
 
 Take a look at [example](./example) for an example.
+4

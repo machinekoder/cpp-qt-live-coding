@@ -1,6 +1,6 @@
 #include "cpp_qt_live_coding_plugin.h"
-#include "livecoding.h"
 #include "filewatcher.h"
+#include "livecoding.h"
 #include "projectbrowser.h"
 
 #include <QFile>
@@ -11,16 +11,15 @@ static void initResources()
     Q_INIT_RESOURCE(qml);
 }
 
-
 static const struct {
-    const char *type;
+    const char* type;
     int major, minor;
-} qmldir [] = {
+} qmldir[] = {
     { "LiveCodingPanel", 1, 0 },
     { "FileSelectionDialog", 1, 0 },
 };
 
-void CppQtLiveCodingPlugin::registerTypes(const char *uri)
+void CppQtLiveCodingPlugin::registerTypes(const char* uri)
 {
     initResources();
 
@@ -30,12 +29,12 @@ void CppQtLiveCodingPlugin::registerTypes(const char *uri)
     qmlRegisterSingletonType<LiveCoding>(uri, 1, 0, "LiveCoding", LiveCoding::qmlSingletonProvider);
 
     const QString filesLocation = fileLocation();
-    for (int i = 0; i < int(sizeof(qmldir)/sizeof(qmldir[0])); i++) {
+    for (int i = 0; i < int(sizeof(qmldir) / sizeof(qmldir[0])); i++) {
         qmlRegisterType(QUrl(filesLocation + "/" + qmldir[i].type + ".qml"), uri, qmldir[i].major, qmldir[i].minor, qmldir[i].type);
     }
 }
 
-void CppQtLiveCodingPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
+void CppQtLiveCodingPlugin::initializeEngine(QQmlEngine* engine, const char* uri)
 {
     Q_UNUSED(uri);
 

@@ -1,12 +1,13 @@
 #include "projectbrowser.h"
 
 #include <QCoreApplication>
-#include <QFileInfo>
+#include <QDebug>
 #include <QDir>
 #include <QDirIterator>
-#include <QDebug>
+#include <QFileInfo>
 
-ProjectBrowser::ProjectBrowser(QObject *parent) : QObject(parent)
+ProjectBrowser::ProjectBrowser(QObject* parent)
+    : QObject(parent)
 {
     m_projectPath = QUrl::fromLocalFile(QFileInfo(QCoreApplication::applicationFilePath()).dir().path());
 
@@ -33,7 +34,7 @@ void ProjectBrowser::update()
     updateFiles();
 }
 
-void ProjectBrowser::setExtensions(const QStringList &extensions)
+void ProjectBrowser::setExtensions(const QStringList& extensions)
 {
     if (m_extensions == extensions)
         return;
@@ -45,12 +46,12 @@ void ProjectBrowser::setExtensions(const QStringList &extensions)
 void ProjectBrowser::updateFiles()
 {
     QStringList fileList;
-    const auto &root = m_projectPath.toLocalFile();
+    const auto& root = m_projectPath.toLocalFile();
 
     QDirIterator it(root, QDirIterator::Subdirectories | QDirIterator::FollowSymlinks);
     while (it.hasNext()) {
         it.next();
-        const auto &extension = it.fileInfo().completeSuffix();
+        const auto& extension = it.fileInfo().completeSuffix();
         if (m_extensions.contains(extension, Qt::CaseInsensitive)) {
             fileList.append(it.fileInfo().filePath());
         }

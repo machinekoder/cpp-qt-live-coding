@@ -1,12 +1,11 @@
 #ifndef FILEWATCHER_H
 #define FILEWATCHER_H
 
+#include <QFileSystemWatcher>
 #include <QObject>
 #include <QUrl>
-#include <QFileSystemWatcher>
 
-class FileWatcher : public QObject
-{
+class FileWatcher : public QObject {
     Q_OBJECT
     Q_PROPERTY(QUrl fileUrl READ fileUrl WRITE setFileUrl NOTIFY fileUrlChanged)
     Q_PROPERTY(bool enabled READ enabled WRITE setEnabled NOTIFY enabledChanged)
@@ -14,7 +13,7 @@ class FileWatcher : public QObject
     Q_PROPERTY(QStringList nameFilters READ nameFilters WRITE setNameFilters NOTIFY nameFiltersChanged)
 
 public:
-    explicit FileWatcher(QObject *parent = nullptr);
+    explicit FileWatcher(QObject* parent = nullptr);
 
     QUrl fileUrl() const;
     bool enabled() const;
@@ -24,16 +23,16 @@ public:
 
 signals:
     void fileChanged();
-    void fileUrlChanged(const QUrl &fileUrl);
+    void fileUrlChanged(const QUrl& fileUrl);
     void enabledChanged(bool enabled);
     void recursiveChanged(bool recursive);
-    void nameFiltersChanged(const QStringList &nameFilters);
+    void nameFiltersChanged(const QStringList& nameFilters);
 
 public slots:
-    void setFileUrl(const QUrl &fileUrl);
+    void setFileUrl(const QUrl& fileUrl);
     void setEnabled(bool enabled);
     void setRecursive(bool recursive);
-    void setNameFilters(const QStringList &nameFilters);
+    void setNameFilters(const QStringList& nameFilters);
 
 private:
     QUrl m_fileUrl;
@@ -48,7 +47,7 @@ private:
 private slots:
     bool updateWatchedFile();
     void onWatchedFileChanged();
-    void onWatchedDirectoryChanged(const QString &);
+    void onWatchedDirectoryChanged(const QString&);
 
 }; // class FileWatcher
 

@@ -1,13 +1,13 @@
 #include "filewatcher.h"
 #include <QDebug>
-#include <QFile>
 #include <QDir>
 #include <QDirIterator>
+#include <QFile>
 #include <QLoggingCategory>
 
 Q_LOGGING_CATEGORY(filewatcherCategory, "filewatcher");
 
-FileWatcher::FileWatcher(QObject *parent)
+FileWatcher::FileWatcher(QObject* parent)
     : QObject(parent)
     , m_fileUrl(QLatin1String(""))
     , m_enabled(true)
@@ -41,7 +41,7 @@ QStringList FileWatcher::nameFilters() const
     return m_nameFilters;
 }
 
-void FileWatcher::setFileUrl(const QUrl &fileUrl)
+void FileWatcher::setFileUrl(const QUrl& fileUrl)
 {
     if (m_fileUrl == fileUrl) {
         return;
@@ -71,7 +71,7 @@ void FileWatcher::setRecursive(bool recursive)
     emit recursiveChanged(m_recursive);
 }
 
-void FileWatcher::setNameFilters(const QStringList &nameFilters)
+void FileWatcher::setNameFilters(const QStringList& nameFilters)
 {
     if (m_nameFilters == nameFilters) {
         return;
@@ -86,23 +86,23 @@ void FileWatcher::setNameFilters(const QStringList &nameFilters)
 void FileWatcher::updateRegExps()
 {
     m_regExps.clear();
-    for (QString &filter: m_nameFilters) {
+    for (QString& filter : m_nameFilters) {
         m_regExps.append(QRegExp(filter, Qt::CaseInsensitive, QRegExp::WildcardUnix));
     }
 }
 
 bool FileWatcher::updateWatchedFile()
 {
-    const auto &files = m_fileSystemWatcher.files();
+    const auto& files = m_fileSystemWatcher.files();
     if (files.length() > 0) {
         m_fileSystemWatcher.removePaths(files);
     }
-    const auto &directories = m_fileSystemWatcher.directories();
+    const auto& directories = m_fileSystemWatcher.directories();
     if (directories.length() > 0) {
         m_fileSystemWatcher.removePaths(directories);
     }
 
-     if (!m_fileUrl.isValid() || !m_enabled) {
+    if (!m_fileUrl.isValid() || !m_enabled) {
         return false;
     }
 
@@ -110,7 +110,7 @@ bool FileWatcher::updateWatchedFile()
         qCWarning(filewatcherCategory) << "Can only watch local files";
         return false;
     }
-    const auto &localFile = m_fileUrl.toLocalFile();
+    const auto& localFile = m_fileUrl.toLocalFile();
     if (localFile.isEmpty()) {
         return false;
     }
@@ -122,10 +122,10 @@ bool FileWatcher::updateWatchedFile()
 
         QDirIterator it(localFile, QDirIterator::Subdirectories | QDirIterator::FollowSymlinks);
         while (it.hasNext()) {
-            const auto &file = it.next();
+            const auto& file = it.next();
             const QString extension = it.fileInfo().completeSuffix();
             bool filtered = false;
-            for (QRegExp &regExp: m_regExps) {
+            for (QRegExp& regExp : m_regExps) {
                 if (regExp.exactMatch(extension)) {
                     filtered = true;
                     break;
@@ -140,11 +140,9 @@ bool FileWatcher::updateWatchedFile()
         }
 
         return newPaths != QSet<QString>::fromList(files).unite(QSet<QString>::fromList(directories));
-    }
-    else if (QFile::exists(localFile)) {
+    } else if (QFile::exists(localFile)) {
         m_fileSystemWatcher.addPath(localFile);
-    }
-    else {
+    } else {
 #ifdef QT_DEBUG
         qCWarning(filewatcherCategory) << "File to watch does not exist" << localFile;
 #endif
@@ -159,7 +157,7 @@ void FileWatcher::onWatchedFileChanged()
     }
 }
 
-void FileWatcher::onWatchedDirectoryChanged(const QString &)
+void FileWatcher::onWatchedDirectoryChanged(const QString&)
 {
     if (updateWatchedFile()) {
         onWatchedFileChanged(); // propagate event
