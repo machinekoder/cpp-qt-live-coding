@@ -209,7 +209,7 @@ Item {
       d.reload()
     }
     nameFilters: ["*.qmlc", "*.jsc", "*.pyc", ".#*", ".*", "__pycache__", "*___jb_tmp___", // PyCharm safe write
-      "*___jb_old___"]
+      "*___jb_old___", "*.o", "*.d", "*.cpp", "*.hpp", "*.h"]
   }
 
   // add additional components that should only be loaded once here.
