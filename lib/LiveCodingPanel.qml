@@ -31,7 +31,7 @@ Item {
     }
 
     function restart() {
-      ApplicationHelpers.restartApplication()
+      LiveCoding.restartApplication()
     }
   }
 
