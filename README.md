@@ -11,8 +11,12 @@ Integrating QML live coding into your application significantly boosts your HMI 
 Additionally, it enables customization of the live coding environemnt, including pre-loading of resource intensive QML components.
 
 **See also**
-
+* [My blog post about Qt/QML live coding](http://machinekoder.com/qt-qml-live-coding-for-everyone/)
 * [python-qt-live-coding](https://github.com/machinekoder/python-qt-live-coding): The Python version of this project.
+
+**Qt/QML Live Coding with C++ Tutorial**
+
+[![Qt/QML Live Coding with C++ Tutorial](http://img.youtube.com/vi/UABm__RZq8g/0.jpg)](http://www.youtube.com/watch?v=UABm__RZq8g)
 
 ## Install
 
