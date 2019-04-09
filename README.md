@@ -39,15 +39,6 @@ make -j$(nproc)
 make install
 ```
 
-### Cookiecutter project template
-
-The easiest way to create a new project with live-coding enable is to use the [Cookiecutter template](https://github.com/machinekoder/cookiecutter-qtquick-qmake-catch-trompeloeil-live).
-
-```bash
-pip install cookiecutter
-cookiecutter gh:machinekoder/cookiecutter-qtquick-qmake-catch-trompeloeil-live
-```
-
 ## How to Use
 
 To use the live coding environment, you need to follow these steps:
@@ -57,3 +48,12 @@ To use the live coding environment, you need to follow these steps:
 3. Disable shadow build and run your application.
 
 Take a look at [example](./example) for an example.
+
+### Cookiecutter project template
+
+The easiest way to create a new project with live-coding enable is to use the [Cookiecutter template](https://github.com/machinekoder/cookiecutter-qtquick-qmake-catch-trompeloeil-live).
+
+```bash
+pip install cookiecutter
+cookiecutter gh:machinekoder/cookiecutter-qtquick-qmake-catch-trompeloeil-live
+```
