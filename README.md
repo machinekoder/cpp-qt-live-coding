@@ -57,4 +57,3 @@ To use the live coding environment, you need to follow these steps:
 3. Disable shadow build and run your application.
 
 Take a look at [example](./example) for an example.
-4
