@@ -13,6 +13,8 @@ Additionally, it enables customization of the live coding environemnt, including
 **See also**
 * [My blog post about Qt/QML live coding](http://machinekoder.com/qt-qml-live-coding-for-everyone/)
 * [python-qt-live-coding](https://github.com/machinekoder/python-qt-live-coding): The Python version of this project.
+* [qtquick-qmake-catch-trompeloeil-live](https://github.com/machinekoder/cookiecutter-qtquick-qmake-catch-trompeloeil-live)
+* [qtquick-cmake-catch-trompeloeil-live](https://github.com/machinekoder/cookiecutter-qtquick-cmake-catch-trompeloeil-live)
 * [Lightning Talk from QtDay.it 19](https://youtu.be/jbOPWncKE1I?t=1856)
 
 **Qt/QML Live Coding with C++ Tutorial**
