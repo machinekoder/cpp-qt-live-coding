@@ -39,6 +39,17 @@ Item {
     }
   }
 
+  Settings {
+    id: windowSettings
+    category: "window"
+    property alias width: root.width
+    property alias height: root.height
+    property alias x: root.x
+    property alias y: root.y
+    property alias visibility: root.visibility
+    property alias hideToolBar: hideToolBarCheck.checked
+  }
+
   MouseArea {
     id: smallArea
     anchors.top: parent.top
