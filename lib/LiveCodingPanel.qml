@@ -11,6 +11,10 @@ Item {
   property int flags: Qt.Window
   property int visibility: Window.AutomaticVisibility
 
+  readonly property var defaultNameFilters: ["*.qmlc", "*.jsc", "*.pyc", ".#*", ".*", "*~", "__pycache__", "*___jb_tmp___", // PyCharm safe write
+    "*___jb_old___"]
+  property var additionalNameFilters: []
+
   QtObject {
     id: d
 
@@ -208,8 +212,7 @@ Item {
     onFileChanged: {
       d.reload()
     }
-    nameFilters: ["*.qmlc", "*.jsc", "*.pyc", ".#*", ".*", "__pycache__", "*___jb_tmp___", // PyCharm safe write
-      "*___jb_old___", "*.o", "*.d", "*.cpp", "*.hpp", "*.h"]
+    nameFilters: root.defaultNameFilters.concat(root.additionalNameFilters)
   }
 
   // add additional components that should only be loaded once here.
