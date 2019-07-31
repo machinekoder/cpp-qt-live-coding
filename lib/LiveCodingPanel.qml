@@ -101,14 +101,14 @@ Item {
       Button {
         Layout.preferredHeight: 30
         enabled: fileDialog.selected
-        text: qsTr("Unload")
-        onClicked: d.unload()
+        text: qsTr("Reload")
+        onClicked: d.reload()
       }
 
       Button {
         Layout.preferredHeight: 30
-        text: qsTr("Reload")
-        onClicked: d.reload()
+        text: qsTr("Unload")
+        onClicked: d.unload()
       }
 
       Button {
