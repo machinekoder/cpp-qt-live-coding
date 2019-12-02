@@ -8,7 +8,7 @@
 
 static void initResources()
 {
-    Q_INIT_RESOURCE(qml);
+    Q_INIT_RESOURCE(com_machinekoder_livecoding);
 }
 
 static const struct {
@@ -36,7 +36,7 @@ void CppQtLiveCodingPlugin::registerTypes(const char* uri)
 
 void CppQtLiveCodingPlugin::initializeEngine(QQmlEngine* engine, const char* uri)
 {
-    Q_UNUSED(uri);
+    Q_UNUSED(uri)
 
     if (isLoadedFromResource())
         engine->addImportPath(QStringLiteral("qrc:/"));

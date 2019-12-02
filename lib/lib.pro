@@ -40,4 +40,4 @@ unix {
 }
 
 RESOURCES += \
-    qml.qrc
+    com_machinekoder_livecoding.qrc
