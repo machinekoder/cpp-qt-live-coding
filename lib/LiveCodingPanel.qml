@@ -1,9 +1,9 @@
-import QtQuick 2.9
-import QtQuick.Controls 2.2
-import QtQuick.Layouts 1.3
-import QtQuick.Window 2.0
-import Qt.labs.settings 1.0
-import com.machinekoder.live 1.0
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQuick.Window
+import Qt.labs.settings
+import com.machinekoder.live
 
 Item {
   id: root
@@ -79,9 +79,9 @@ Item {
     propagateComposedEvents: true
     visible: false
 
-    onClicked: mouse.accepted = false
-    onPressed: mouse.accepted = false
-    onReleased: mouse.accepted = false
+    onClicked: (mouse) => {mouse.accepted = false}
+    onPressed: (mouse) => {mouse.accepted = false}
+    onReleased: (mouse) => {mouse.accepted = false}
     onExited: visible = false
     onVisibleChanged: delayTimer.start()
 
@@ -198,7 +198,7 @@ Item {
       FileSelectionDialog {
         id: fileDialog
         anchors.fill: parent
-        model: browser.qmlFiles
+        model: browser ? browser.qmlFiles : []
         visible: !contentItem.loaded
 
         onSelectedChanged: {
@@ -212,12 +212,13 @@ Item {
 
   ProjectBrowser {
     id: browser
-    extensions: ["qml", "ui.qml"]
+    //projectPath: userProjectPath
+    extensions: ['qml', 'ui.qml']
   }
 
   FileWatcher {
     id: fileWatcher
-    fileUrl: browser.projectPath
+    fileUrl: browser ? browser.projectPath : ""
     recursive: true
     enabled: fileDialog.selected
     onFileChanged: {

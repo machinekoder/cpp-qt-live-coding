@@ -9,7 +9,7 @@
 ProjectBrowser::ProjectBrowser(QObject* parent)
     : QObject(parent)
 {
-    m_projectPath = QUrl::fromLocalFile(QFileInfo(QCoreApplication::applicationFilePath()).dir().path());
+    m_projectPath = QUrl::fromLocalFile(QDir::currentPath());
 
     connect(this, &ProjectBrowser::extensionsChanged, this, &ProjectBrowser::updateFiles);
 }
@@ -58,4 +58,12 @@ void ProjectBrowser::updateFiles()
     }
     m_qmlFiles = fileList;
     emit qmlFilesChanged();
+}
+
+void ProjectBrowser::setProjectPath(const QUrl &newProjectPath)
+{
+    if (m_projectPath == newProjectPath)
+        return;
+    m_projectPath = newProjectPath;
+    emit projectPathChanged();
 }

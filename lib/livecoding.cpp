@@ -1,6 +1,7 @@
 #include "livecoding.h"
 #include <QCoreApplication>
 #include <QDesktopServices>
+#include <QDir>
 #include <QLocale>
 #include <QProcess>
 #include <QSettings>
@@ -36,6 +37,6 @@ void LiveCoding::setLanguage(const QString& language)
 
 void LiveCoding::restartApplication()
 {
-    qApp->quit();
-    QProcess::startDetached(qApp->arguments()[0], qApp->arguments());
+    QProcess::startDetached(qApp->arguments().at(0), qApp->arguments().sliced(1));
+    QCoreApplication::exit();
 }

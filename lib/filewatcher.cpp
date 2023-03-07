@@ -87,7 +87,7 @@ void FileWatcher::updateRegExps()
 {
     m_regExps.clear();
     for (QString& filter : m_nameFilters) {
-        m_regExps.append(QRegExp(filter, Qt::CaseInsensitive, QRegExp::WildcardUnix));
+        m_regExps.append(QRegularExpression::fromWildcard(filter, Qt::CaseInsensitive));
     }
 }
 
@@ -125,8 +125,8 @@ bool FileWatcher::updateWatchedFile()
             const auto& file = it.next();
             const QString extension = it.fileInfo().completeSuffix();
             bool filtered = false;
-            for (QRegExp& regExp : m_regExps) {
-                if (regExp.exactMatch(extension)) {
+            for (const auto &regExp : m_regExps) {
+                if (regExp.match(extension).hasMatch()) {
                     filtered = true;
                     break;
                 }
@@ -139,7 +139,7 @@ bool FileWatcher::updateWatchedFile()
             newPaths.insert(it.filePath());
         }
 
-        return newPaths != QSet<QString>::fromList(files).unite(QSet<QString>::fromList(directories));
+        return newPaths != QSet<QString>(files.begin(), files.end()).unite(QSet<QString>(directories.begin(), directories.end()));
     } else if (QFile::exists(localFile)) {
         m_fileSystemWatcher.addPath(localFile);
     } else {

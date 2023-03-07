@@ -1,16 +1,16 @@
-import QtQuick 2.9
-import QtQuick.Controls 2.2
-import QtQuick.Layouts 1.3
-import QtQuick.Window 2.0
-import Qt.labs.settings 1.0
-import com.machinekoder.live 1.0
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import QtQuick.Window
+import Qt.labs.settings
+import com.machinekoder.live
 
 ApplicationWindow {
   id: root
   visible: true
-  width: 640
-  height: 480
-  title: qsTr("Live Coding Example")
+  title: qsTr("Qt Live Coding")
+  width: 1024
+  height: 800
   flags: liveCoding.flags
   visibility: liveCoding.visibility
 

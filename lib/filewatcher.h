@@ -4,6 +4,7 @@
 #include <QFileSystemWatcher>
 #include <QObject>
 #include <QUrl>
+#include <QRegularExpression>
 
 class FileWatcher : public QObject {
     Q_OBJECT
@@ -40,7 +41,7 @@ private:
     bool m_recursive;
     QFileSystemWatcher m_fileSystemWatcher;
     QStringList m_nameFilters;
-    QList<QRegExp> m_regExps;
+    QList<QRegularExpression> m_regExps;
 
     void updateRegExps();
 

@@ -1,7 +1,7 @@
-import QtQuick 2.0
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.3
-import Qt.labs.settings 1.0
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import Qt.labs.settings
 
 Item {
   property bool selected: false
@@ -16,7 +16,7 @@ Item {
     id: d
     readonly property var filteredModel: filterModel(root.model)
 
-    function filterModel(model) {
+    function filterModel(model: list) {
       var newModel = []
       for (var key in model) {
         var item = model[key]
@@ -27,10 +27,9 @@ Item {
       return newModel
     }
 
-    function select(file) {
+    function select(file: string) {
       root.file = "file://" + file
-        // @disable-check M110
-        root.folder = "file://" + new String(file).substring(
+      root.folder = "file://" + new String(file).substring(
             0, file.lastIndexOf('/'))
       root.selected = true
     }
@@ -64,14 +63,14 @@ Item {
       model: d.filteredModel
 
       delegate: Button {
-        readonly property string data_: d.filteredModel[index]
-        text: data_
+        readonly property string data: d.filteredModel[index]
+        text: data
         onClicked: d.select(text)
         height: visible ? 30 : 0
       }
 
       onCountChanged: {
-        if (root.autoSelect && (count == 1) && !root.selected) {
+        if (root.autoSelect && (count === 1) && !root.selected) {
           selectTimer.start()
         }
       }
