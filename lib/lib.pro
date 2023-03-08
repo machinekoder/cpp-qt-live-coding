@@ -11,14 +11,12 @@ SOURCES += \
         filewatcher.cpp \
     projectbrowser.cpp \
     cpp_qt_live_coding_plugin.cpp \
-    livewindow.cpp \
     livecoding.cpp
 
 HEADERS += \
         filewatcher.h \
     projectbrowser.h \
     cpp_qt_live_coding_plugin.h \
-    livewindow.h \
     livecoding.h
 
 DISTFILES = qmldir
