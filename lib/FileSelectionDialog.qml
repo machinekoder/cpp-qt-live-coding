@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import Qt.labs.settings
+import QtCore
 
 Item {
   property bool selected: false
@@ -28,8 +28,8 @@ Item {
     }
 
     function select(file: string) {
-      root.file = "file://" + file
-      root.folder = "file://" + new String(file).substring(
+      root.file = "file:///" + file
+      root.folder = "file:///" + file.substring(
             0, file.lastIndexOf('/'))
       root.selected = true
     }
