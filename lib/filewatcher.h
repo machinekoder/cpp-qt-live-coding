@@ -6,6 +6,9 @@
 #include <QUrl>
 #include <QRegularExpression>
 
+/**
+ * @brief The FileWatcher class watches a file or directory for changes.
+ */
 class FileWatcher : public QObject {
     Q_OBJECT
     Q_PROPERTY(QUrl fileUrl READ fileUrl WRITE setFileUrl NOTIFY fileUrlChanged)
@@ -19,7 +22,6 @@ public:
     QUrl fileUrl() const;
     bool enabled() const;
     bool recursive() const;
-    bool verbose() const;
     QStringList nameFilters() const;
 
 signals:
@@ -53,3 +55,4 @@ private slots:
 }; // class FileWatcher
 
 #endif // FILEWATCHER_H
+

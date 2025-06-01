@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "qfile": "cpp",
+        "qloggingcategory": "cpp",
+        "qqmlapplicationengine": "cpp"
+    }
+}

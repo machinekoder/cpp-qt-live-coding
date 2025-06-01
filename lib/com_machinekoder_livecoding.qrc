@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/com/machinekoder/live">
-        <file>FileSelectionDialog.qml</file>
-        <file>LiveCodingPanel.qml</file>
-    </qresource>
-</RCC>

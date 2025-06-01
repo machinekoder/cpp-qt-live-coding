@@ -9,7 +9,7 @@ Q_LOGGING_CATEGORY(filewatcherCategory, "filewatcher");
 
 FileWatcher::FileWatcher(QObject* parent)
     : QObject(parent)
-    , m_fileUrl(QLatin1String(""))
+    , m_fileUrl{""}
     , m_enabled(true)
     , m_recursive(false)
 {
@@ -86,7 +86,7 @@ void FileWatcher::setNameFilters(const QStringList& nameFilters)
 void FileWatcher::updateRegExps()
 {
     m_regExps.clear();
-    for (QString& filter : m_nameFilters) {
+    for (const QString& filter : m_nameFilters) {
         m_regExps.append(QRegularExpression::fromWildcard(filter, Qt::CaseInsensitive));
     }
 }
@@ -124,17 +124,13 @@ bool FileWatcher::updateWatchedFile()
         while (it.hasNext()) {
             const auto& file = it.next();
             const QString extension = it.fileInfo().completeSuffix();
-            bool filtered = false;
-            for (const auto &regExp : m_regExps) {
-                if (regExp.match(extension).hasMatch()) {
-                    filtered = true;
-                    break;
-                }
-            }
-            if ((it.fileName() == QLatin1String("..")) || (it.fileName() == QLatin1String("."))
-                || filtered) {
+            bool filtered = std::any_of(m_regExps.begin(), m_regExps.end(), [&](const QRegularExpression& regExp) {
+                return regExp.match(extension).hasMatch();
+            });
+            if (it.fileName() == ".." || it.fileName() == "." || filtered) {
                 continue;
             }
+
             m_fileSystemWatcher.addPath(file);
             newPaths.insert(it.filePath());
         }
@@ -163,3 +159,4 @@ void FileWatcher::onWatchedDirectoryChanged(const QString&)
         onWatchedFileChanged(); // propagate event
     }
 }
+
